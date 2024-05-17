@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 6304791212465563960}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.172, y: 0.035, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.4266, y: 0.4266, z: 0.4266}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -117,7 +117,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -179,3 +179,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1
+  sang: {fileID: 6771892419188364251, guid: 0191765a2061e2a4c8137d3b343b355b, type: 3}

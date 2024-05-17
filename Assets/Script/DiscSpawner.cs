@@ -8,6 +8,7 @@ public class DiscSpawner : MonoBehaviour
 
     void Start()
     {
+        SpawnDisc();
         nextSpawnTime = Time.time + spawnInterval;
     }
 

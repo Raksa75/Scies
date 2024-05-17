@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -7,11 +8,14 @@ public class PlayerMovement : MonoBehaviour
     public float dashDuration = 0.2f;
     public float dashCooldown = 1f;
 
+
     private Rigidbody2D rb;
     private Vector2 moveInput;
     private bool isDashing = false;
     private float dashTime;
     private float dashCooldownTime;
+
+    static public bool isInvicible = false;
 
     void Start()
     {
@@ -20,16 +24,15 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (!isDashing)
-        {
-            moveInput.x = Input.GetAxis("Horizontal");
-            moveInput.y = Input.GetAxis("Vertical");
+        moveInput.x = Input.GetAxis("Horizontal");
+        moveInput.y = Input.GetAxis("Vertical");
 
-            if (Input.GetKeyDown(KeyCode.Space) && Time.time > dashCooldownTime)
-            {
-                StartDash();
-            }
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time > dashCooldownTime)
+        {
+            StartCoroutine(Invicibility());
+            StartDash();
         }
+
         else
         {
             if (Time.time >= dashTime)
@@ -62,4 +65,13 @@ public class PlayerMovement : MonoBehaviour
     {
         isDashing = false;
     }
+    private IEnumerator Invicibility()
+    {
+        isInvicible = true;
+        yield return new WaitForSeconds(0.2f);
+        isInvicible = false;
+    }
 }
+
+
+

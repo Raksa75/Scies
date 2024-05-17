@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 1;
+    public GameObject sang;
     private int currentHealth;
 
     void Start()
@@ -21,7 +22,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Die()
     {
-        // Logique pour gérer la mort du personnage (par exemple, afficher un écran de game over, recharger le niveau, etc.)
+        Instantiate(sang, gameObject.transform);
         Debug.Log("Game Over");
     }
 }

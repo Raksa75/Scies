@@ -19,19 +19,24 @@ public class DiscMovement : MonoBehaviour
         rb.velocity = direction * speed;
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && PlayerMovement.isInvicible == false)
         {
-            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+            PlayerHealth playerHealth = collision.gameObject.GetComponentInParent<PlayerHealth>();
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(damageAmount);
             }
         }
-        else if (collision.gameObject.CompareTag("Wall"))
-        {
-            direction = Vector2.Reflect(direction, collision.contacts[0].normal);
+    }
+    void OnCollisionEnter2D(Collision2D collision_reflect)
+    {
+        Debug.Log("collision mur");
+        if (collision_reflect.gameObject.CompareTag("Wall"))
+        {   
+            ContactPoint2D contact = collision_reflect.contacts[0];
+            direction = Vector2.Reflect(direction, collision_reflect.contacts[0].normal);
             rb.velocity = direction * speed;
         }
     }
